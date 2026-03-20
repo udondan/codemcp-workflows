@@ -7,7 +7,7 @@ description: >
   users mention to build, enhance or fix code.
 license: MIT
 metadata:
-  version: '${VERSION}'
+  version: '6.2.0'
   repository: https://github.com/mrsimpson/responsible-vibe-mcp
   author: mrsimpson
 requires-mcp-servers:

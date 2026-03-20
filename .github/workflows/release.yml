@@ -124,7 +124,7 @@ jobs:
           default_bump: patch
           tag_prefix: v
 
-      - name: Update package.json version
+      - name: Update version in package.json and skill
         if: steps.version.outputs.new_tag
         run: |
           NEW_VERSION=${{ steps.version.outputs.new_version }}
@@ -138,9 +138,13 @@ jobs:
           # Ensure no platform-specific dependencies were accidentally saved
           pnpm remove @rollup/rollup-linux-x64-gnu @oxlint/linux-x64-gnu 2>/dev/null || true
 
+          # Generate resolved skill file for skills registry
+          mkdir -p skills/workflows
+          sed "s/\${VERSION}/$NEW_VERSION/g" resources/templates/skills/SKILL.md > skills/workflows/SKILL.md
+
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add package.json packages/*/package.json pnpm-lock.yaml
+          git add package.json packages/*/package.json pnpm-lock.yaml skills/workflows/SKILL.md
           git commit -m "chore: bump version to $NEW_VERSION [skip ci]" || exit 0
           git push
         env:
