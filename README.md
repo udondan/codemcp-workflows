@@ -1,4 +1,4 @@
-# Agentic Workflows 
+# Agentic Workflows
 
 fka. "Responsible Vibe MCP"
 
@@ -10,12 +10,20 @@ Transform any AI coding agent into a structured development partner with battle-
 
 ## ⚡ Quick Start
 
+### Install via skills tool
+
+```bash
+npx skills add https://github.com/mrsimpson/responsible-vibe-mcp --skill workflows
+```
+
+### Setup via workflows
+
 ```bash
 # Setup your coding agent
-npx @codemcp/workflows setup config kiro  # or claude, gemini, opencode, copilot
+npx @codemcp/workflows setup kiro --mode config  # or claude, gemini, opencode, copilot
 
 # Or use skills (agentskills.io format) for on-demand loading
-npx @codemcp/workflows setup skill claude  # or gemini, opencode, copilot, kiro
+npx @codemcp/workflows setup claude --mode skill  # or gemini, opencode, copilot, kiro
 ```
 
 Head over to a new empty dir and ask your agent: _"Build a UNO-like card game"_ – and instantly experience how your agent doesn't just shoot, but starts engineering – with YOU in the driver seat!
